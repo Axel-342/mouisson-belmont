@@ -6,8 +6,8 @@ df = df.drop(columns=['Series_reference','Suppressed','Suppressed.1','UNITS','Ma
 
 filtered_df = df[df['Series_title_2'].str.contains('Credit|Debit|Services', na=False)]
 
-filtered_df.to_csv('fichierfin.csv', index=False)
+filtered_df = filtered_df.reset_index(drop=True)
+filtered_df['ID'] = filtered_df.index + 1
 
-
-
+filtered_df.to_csv('result.csv', index=False)
 
